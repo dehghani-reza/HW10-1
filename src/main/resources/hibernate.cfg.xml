@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/xsd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost/hw10?createDatabaseIfNotExist=true
+        </property>
+        <property name="hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQL57Dialect
+        </property>
+        <property name="show_sql">false</property> <!-- showing sql query by hibernate -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- Mapping -->
+        <mapping class="ir.mctab.java32.hw10.entities.User" />
+        <mapping class="ir.mctab.java32.hw10.entities.Article" />
+        <mapping class="ir.mctab.java32.hw10.entities.Category" />
+        <mapping class="ir.mctab.java32.hw10.repositories.UserDAO" />
+        <mapping class="ir.mctab.java32.hw10.view.Remote" />
+        <mapping class="ir.mctab.java32.hw10.entities.Role"/>
+        <mapping class="ir.mctab.java32.hw10.entities.Tag"/>
+
+    </session-factory>
+</hibernate-configuration>
