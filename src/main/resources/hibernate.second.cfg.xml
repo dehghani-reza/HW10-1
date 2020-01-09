@@ -7,7 +7,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost/hw10?createDatabaseIfNotExist=true
+            jdbc:mysql://localhost/hw10second?createDatabaseIfNotExist=true
         </property>
         <property name="hibernate.connection.driver_class">
             com.mysql.cj.jdbc.Driver
@@ -18,13 +18,7 @@
         <property name="show_sql">false</property> <!-- showing sql query by hibernate -->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- Mapping -->
-        <mapping class="ir.mctab.java32.hw10.entities.User" />
-        <mapping class="ir.mctab.java32.hw10.entities.Article" />
-        <mapping class="ir.mctab.java32.hw10.entities.Category" />
-        <mapping class="ir.mctab.java32.hw10.repositories.UserDAO" />
-        <mapping class="ir.mctab.java32.hw10.view.Remote" />
-        <mapping class="ir.mctab.java32.hw10.entities.Role"/>
-        <mapping class="ir.mctab.java32.hw10.entities.Tag"/>
+        <mapping class="ir.mctab.java32.hw10.entities.Address"/>
 
     </session-factory>
 </hibernate-configuration>

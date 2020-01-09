@@ -3,10 +3,7 @@ package ir.mctab.java32.hw10.view;
 
 import ir.mctab.java32.hw10.config.log4j.Log4j;
 import ir.mctab.java32.hw10.entities.*;
-import ir.mctab.java32.hw10.repositories.ArticleDAO;
-import ir.mctab.java32.hw10.repositories.CategoryDAO;
-import ir.mctab.java32.hw10.repositories.TagDAO;
-import ir.mctab.java32.hw10.repositories.UserDAO;
+import ir.mctab.java32.hw10.repositories.*;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 
@@ -25,6 +22,7 @@ public class Remote {
     ArticleDAO articleDAO = new ArticleDAO();
     CategoryDAO categoryDAO = new CategoryDAO();
     TagDAO tagDAO = new TagDAO();
+    AddressDAO addressDAO = new AddressDAO();
 
     //*********************************************
     public Remote(Session session) {
@@ -66,6 +64,18 @@ public class Remote {
         User user = userDAO.signup(username, nationalId, birthday);
         System.out.println("user " + user.getUserName() + " with id " + user.getId() + " has been created"
                 + "\nremember your default pass is your nationalNumber");
+
+        //*******Address******
+        System.out.println("please enter your zip code: ");
+        Long zipCode = scannerInt.nextLong();
+        System.out.println("please enter your city name: ");
+        String city = scanner.nextLine();
+        System.out.println("please enter your street name: ");
+        String street = scanner.nextLine();
+        System.out.println("please enter your alley name: ");
+        String alley = scanner.nextLine();
+        addressDAO.createAddress(zipCode,city,street,alley,user);
+
         return user;
     }
 
