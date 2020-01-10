@@ -11,8 +11,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class ArticleDAO {
+public class ArticleDAO implements FindAll<Article,Long> {
 
     Session session;
 
@@ -81,5 +84,21 @@ public class ArticleDAO {
     public void deleteArticle(Long id) {
         Article article = session.load(Article.class, id);
         session.delete(article);
+    }
+//****************************Generic Method********************************
+    @Override
+    public List<Article> findByPredicate(Predicate<Article> predicate) {
+        Query<Article> query1 = session.createQuery("From Article");
+        List<Article> articles = query1.list();
+        articles = articles.stream().filter(predicate).collect(Collectors.toList());
+        return articles;
+    }
+
+    @Override
+    public List<Long> findByFunction(Function<Article, Long> function , User user) {
+        Query<Article> query1 = session.createQuery("From Article where  user_id =" +user.getId());
+        List<Article> articles = query1.list();
+        List<Long> articles1 = articles.stream().map(function).collect(Collectors.toList());
+        return articles1;
     }
 }

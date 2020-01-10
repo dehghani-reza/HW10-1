@@ -60,6 +60,11 @@ logger.info("application going to start at: "+DateTimeFormatter.ofPattern("yyyy/
             switch (inputCommand) {
                 case 1:
                     user = remote.loginCommand(scanner, user);
+                    try {
+                        remote.dashboard(user);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                     if (user == null) {
                         System.out.println(Color.ANSI_PURPLE + "Wrong Username or Password" + Color.ANSI_GREEN + "\ntry again...." + Color.ANSI_RESET);
                         logger.error("failed to login");

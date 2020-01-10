@@ -177,7 +177,7 @@ public class Remote {
 
     //8
     public void publishArticle(Scanner scannerInt, User user) throws Exception {
-        List<Article> articles2 = articleDAO.loadPublishArticle();
+        List<Article> articles2 = articleDAO.findByPredicate(Article::isPublish);
         articles2.forEach(System.out::println);
         System.out.println("choose article which you want to publish ");
         Long publishId = scannerInt.nextLong();
@@ -233,6 +233,16 @@ public class Remote {
         System.out.println("which user you want to promote or demote enter id of that user: ");
         Long id = scannerInt.nextLong();
         userDAO.addRole(id);
+    }
+
+    //dashboard
+    public void dashboard(User user) throws Exception {
+       List<Long> articles =  articleDAO.findByFunction((Article::getId) ,user);
+        System.out.println("your past 10 article: ");
+        if(articles.isEmpty()){
+            throw new Exception("you have no article");
+        }
+       articles.stream().limit(10).forEach(aLong -> System.out.println(aLong+" ,"));
     }
 
 }
