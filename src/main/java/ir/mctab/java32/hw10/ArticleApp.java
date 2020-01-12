@@ -26,7 +26,7 @@ public class ArticleApp {
         Session session = sessionFactory.openSession();
 
         //git address
-        System.out.println("git address: https://github.com/dehghani-reza/HW8");
+        System.out.println("git address: https://github.com/dehghani-reza/HW10-1.git");
 
         //logging
         Logger logger = Log4j.getLogger();
