@@ -37,7 +37,7 @@ public class UserDAO {
         return user;
     }
 
-    public void changiPassword(User user, String pass) {
+    public void changePassword(User user, String pass) {
         user = session.load(User.class, user.getId());
         user.setPassword(pass);
         session.update(user);

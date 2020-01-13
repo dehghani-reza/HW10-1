@@ -105,7 +105,7 @@ public class Remote {
         String pass = scanner.nextLine();
         user = session.load(User.class, user.getId());
         user.setPassword(pass);
-        userDAO.changiPassword(user, pass);
+        userDAO.changePassword(user, pass);
         System.out.println(Color.ANSI_GREEN + "your password changed" + Color.ANSI_RESET);
         logger.info(user.toString() + "changed password");
     }
@@ -155,7 +155,7 @@ public class Remote {
         Long categoryId = scannerInt.nextLong();
         Category category = categoryDAO.loadCategory(categoryId);
         //*******tag***********
-        List<Tag> tagList = tagDAO.loadAllTas();
+        List<Tag> tagList = tagDAO.loadAllTags();
         Set<Tag> articleTags = new HashSet<>();
         int tagCommand = -1;
         while(tagCommand!=0) {

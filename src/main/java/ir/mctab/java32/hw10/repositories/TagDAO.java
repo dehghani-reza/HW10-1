@@ -14,7 +14,7 @@ public class TagDAO {
     }
 
     public Tag createTeg(String name) throws Exception{
-        List<Tag> tags = loadAllTas();
+        List<Tag> tags = loadAllTags();
         if(tags.stream().anyMatch(tag -> tag.getTagName().equals(name))){
             throw new Exception("this tag name already exist");
         }
@@ -24,7 +24,7 @@ public class TagDAO {
         return tag;
     }
 
-    public List<Tag> loadAllTas(){
+    public List<Tag> loadAllTags(){
         Query<Tag> query1 = session.createQuery("From Tag ");
         List<Tag> tags = query1.list();
         return tags;
